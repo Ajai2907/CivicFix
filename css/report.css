@@ -1,0 +1,219 @@
+/*==============================
+         REPORT PAGE
+==============================*/
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(180deg, #0B1220, #1E3A5F);
+
+    color: white;
+
+    min-height: 100vh;
+
+}
+
+.report-header {
+
+    position: relative;
+
+    text-align: center;
+
+    padding: 40px 20px 25px;
+
+}
+
+.back-btn {
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 20px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+}
+
+.report-header h1 {
+
+    font-size: 3rem;
+
+    margin-bottom: 15px;
+
+}
+
+.report-header p {
+
+    color: #CBD5E1;
+
+    font-size: 1.1rem;
+
+}
+
+.report-container {
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin: 20px auto 80px;
+
+}
+
+#complaintForm {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
+
+}
+
+#complaintForm section {
+
+    margin-bottom: 35px;
+
+}
+
+#complaintForm h2 {
+
+    margin-bottom: 15px;
+
+    color: #0f172a;
+
+}
+
+input,
+select,
+textarea {
+
+    width: 95%;
+
+    padding: 15px;
+
+    border: 2px solid #3560a1;
+
+    transition: 0.3s ease;
+
+    border-radius: 12px;
+
+    font-size: 1rem;
+
+    margin-top: 10px;
+
+}
+
+textarea {
+
+    resize: vertical;
+
+}
+
+#map {
+
+    margin-top: 15px;
+
+    height: 250px;
+
+    border: 2px dashed #cbd5e1;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #64748b;
+
+}
+
+button {
+
+    cursor: pointer;
+
+}
+
+button[type="button"],
+
+button[type="submit"] {
+
+    background: linear-gradient(90deg, #2563eb, #0284c7);
+
+    color: white;
+
+    border: none;
+
+    padding: 15px 28px;
+
+    border-radius: 12px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+}
+
+button[type="submit"] {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+}
+
+.checkbox-group label {
+
+    color: #1E293B;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    margin: 0;
+
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+
+    outline: none;
+    border-color: #193a8c;
+
+    box-shadow: 0 0 15px rgba(47, 107, 255, .35);
+
+}
+
+.checkbox-group {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    margin: 25px 0;
+
+}
+
+.checkbox-group input {
+
+    width: 18px;
+    height: 18px;
+
+    margin: 0;
+
+}

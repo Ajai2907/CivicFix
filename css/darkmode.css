@@ -1,0 +1,21 @@
+/* ==========================================================
+   DARK MODE VARIABLES
+   ========================================================== */
+
+body.dark-mode {
+
+    --background-color: #0B1220;
+
+    --surface-color: #111827;
+
+    --card-color: #1E293B;
+
+    --text-primary: #F8FAFC;
+
+    --text-secondary: #CBD5E1;
+
+    --text-light: #94A3B8;
+
+    --border-color: #334155;
+
+}

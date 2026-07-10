@@ -1,0 +1,70 @@
+/* ==========================================================
+   GLOBAL STYLES
+   ========================================================== */
+
+@import url("variables.css");
+@import url("darkmode.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background: var(--background-color);
+
+    color: var(--text-primary);
+
+    font-family: var(--font-family);
+
+    transition: var(--transition-normal);
+
+    overflow-x: hidden;
+
+}
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+button {
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    border: none;
+
+}
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+ul {
+
+    list-style: none;
+
+}
+
+.container {
+
+    width: min(92%, 1400px);
+
+    margin: auto;
+
+}

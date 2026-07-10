@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Issue | CivicFix</title>
+
+    <link rel="stylesheet" href="../css/report.css">
+
+    <link rel="stylesheet" href="../css/darkmode.css">
+
+    <link rel="stylesheet" href="../css/variables.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="report-header">
+
+        <a href="../index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+
+        <h1>Report a Civic Issue</h1>
+
+        <p>
+            Help improve your city by reporting civic problems.
+        </p>
+
+    </header>
+
+    <!-- Complaint Form -->
+
+    <main class="report-container">
+
+        <form id="complaintForm">
+
+            <!-- Photo -->
+
+            <section>
+
+                <h2>Upload Photo</h2>
+
+                <input type="file" id="complaintImage" accept="image/*">
+
+            </section>
+
+            <!-- Category -->
+
+            <section>
+
+                <h2>Issue Category</h2>
+
+                <select id="category">
+
+                    <option>Select Category</option>
+
+                    <option>Road Damage</option>
+
+                    <option>Water Leakage</option>
+
+                    <option>Garbage</option>
+
+                    <option>Street Light</option>
+
+                    <option>Drainage</option>
+
+                    <option>Others</option>
+
+                </select>
+
+            </section>
+
+            <!-- Description -->
+
+            <section>
+
+                <h2>Description</h2>
+
+                <textarea id="description" rows="6" placeholder="Describe the issue..."></textarea>
+
+            </section>
+
+            <!-- Location -->
+
+            <section>
+
+                <h2>Location</h2>
+
+                <button type="button">
+
+                    <i class="fa-solid fa-location-crosshairs"></i>
+
+                    Get Current Location
+
+                </button>
+
+                <div id="map">
+
+                    Map Preview
+
+                </div>
+
+            </section>
+
+            <!-- Citizen Details -->
+
+            <section>
+
+                <h2>Your Details</h2>
+
+                <input type="text" id="name" placeholder="Full Name">
+                <input type="email" id="email" placeholder="Email Address">
+                <input type="tel" id="phone" placeholder="Phone Number">
+
+            </section>
+
+            <!-- Declaration -->
+
+            <section>
+
+                <div class="checkbox-group">
+
+                    <input type="checkbox" id="confirmation">
+
+                    <label for="confirmation">I confirm the all the above information is correct.</label>
+
+                </div>
+
+            </section>
+
+            <!-- Submit -->
+
+            <button type="submit" id="submitComplaint">
+
+                Submit Complaint
+
+            </button>
+
+        </form>
+
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+
+    <script src="../js/firebase.js"></script>
+
+    <script src="../js/firestore.js"></script>
+
+    <script src="../js/config.js"></script>
+
+    <script src="../js/gemini.js"></script>
+
+    <script src="../js/report.js"></script>
+
+</body>
+
+</html>

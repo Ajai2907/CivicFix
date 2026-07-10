@@ -1,0 +1,1129 @@
+/* ==========================================================
+                     NAVIGATION BAR
+========================================================== */
+
+.navbar {
+
+    width: 100%;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, .85);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border-color);
+
+}
+
+.nav-container {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    height: 85px;
+
+}
+
+/* Logo */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+.logo-circle {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,
+            var(--primary-color),
+            var(--secondary-color));
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-weight: 700;
+
+    font-size: 1.2rem;
+
+    box-shadow: var(--shadow-md);
+
+}
+
+.logo-text h2 {
+
+    font-size: 1.4rem;
+
+    color: var(--text-primary);
+
+}
+
+.logo-text span {
+
+    font-size: .8rem;
+
+    color: var(--text-light);
+
+}
+
+/* Navigation */
+
+.nav-links {
+
+    display: flex;
+
+    gap: 35px;
+
+}
+
+.nav-links a {
+
+    color: var(--text-secondary);
+
+    font-weight: 500;
+
+    transition: .3s;
+
+}
+
+.nav-links a:hover {
+
+    color: var(--primary-color);
+
+}
+
+/* Right Side */
+
+.nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+.theme-btn {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: var(--surface-color);
+
+    box-shadow: var(--shadow-sm);
+
+    transition: .3s;
+
+}
+
+.theme-btn:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.login-btn {
+
+    background: linear-gradient(135deg,
+            var(--primary-color),
+            var(--secondary-color));
+
+    color: white;
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+    box-shadow: var(--shadow-md);
+
+}
+
+.login-btn:hover {
+
+    transform: translateY(-3px);
+
+}
+
+/* ==========================================================
+                     HERO SECTION
+========================================================== */
+
+.hero {
+
+    min-height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.hero-container {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+/* LEFT */
+
+.hero-left h1 {
+
+    font-size: 4rem;
+
+    line-height: 1.2;
+
+    margin: 25px 0;
+
+    color: var(--text-primary);
+
+}
+
+.hero-left span {
+
+    color: var(--primary-color);
+
+}
+
+.hero-left p {
+
+    color: var(--text-secondary);
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+
+}
+
+.hero-left {
+    width: 50%;
+}
+
+.hero-badge {
+
+    background: rgba(37, 99, 235, .12);
+
+    color: var(--primary-color);
+
+    padding: 12px 22px;
+
+    border-radius: 40px;
+
+    font-weight: 600;
+
+}
+
+/* Buttons */
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 20px;
+
+}
+
+.primary-btn {
+
+    background: linear-gradient(135deg,
+            var(--primary-color),
+            var(--secondary-color));
+
+    color: white;
+
+    padding: 18px 35px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+    box-shadow: var(--shadow-md);
+
+    transition: .35s;
+
+}
+
+.primary-btn:hover {
+
+    transform: translateY(-5px);
+
+}
+
+.secondary-btn {
+
+    border: 2px solid var(--primary-color);
+
+    color: var(--primary-color);
+
+    padding: 18px 35px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+    transition: .35s;
+
+}
+
+.secondary-btn:hover {
+
+    background: var(--primary-color);
+
+    color: white;
+
+}
+
+/* RIGHT */
+
+.hero-right {
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+.hero-right {
+    width: 45%;
+}
+
+.hero-image {
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 40px;
+
+    background: linear-gradient(135deg,
+            #EAF3FF,
+            #FFFFFF);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 9rem;
+
+    box-shadow: var(--shadow-lg);
+
+    animation: floating 4s ease-in-out infinite;
+
+    font-size: 7rem;
+    color: var(--primary-color);
+
+}
+
+/* ==========================================================
+                  HERO BACKGROUND EFFECTS
+========================================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Large Blue Glow */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    background: rgba(37, 99, 235, .08);
+
+    border-radius: 50%;
+
+    top: -220px;
+
+    right: -180px;
+
+    filter: blur(80px);
+
+    z-index: -1;
+
+}
+
+/* Small Glow */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+
+    height: 250px;
+
+    background: rgba(0, 111, 142, .08);
+
+    border-radius: 50%;
+
+    bottom: -100px;
+
+    left: -80px;
+
+    filter: blur(60px);
+
+    z-index: -1;
+
+}
+
+/* ==========================================================
+                    PORTAL SECTION
+========================================================== */
+
+
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 60px;
+
+}
+
+.section-title h2 {
+
+    font-size: 2.5rem;
+
+    margin-bottom: 15px;
+
+}
+
+.section-title p {
+
+    color: var(--text-secondary);
+
+}
+
+.portal-btn:hover {
+
+    transform: translateY(-4px);
+
+}
+
+/* ==========================================================
+                     STATISTICS
+========================================================== */
+
+.stats-section {
+
+    padding: 90px 0;
+
+}
+
+.stats-container {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+
+}
+
+.stat-card {
+
+    background: var(--card-color);
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow-md);
+
+    border: 1px solid var(--border-color);
+
+    transition: .35s;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.stat-card h2 {
+
+    color: var(--primary-color);
+
+    font-size: 2.8rem;
+
+    margin-bottom: 10px;
+
+}
+
+.stat-card p {
+
+    color: var(--text-secondary);
+
+}
+
+/* ==========================================================
+                        FEATURES
+========================================================== */
+
+.features-section {
+
+    padding: 100px 0;
+
+}
+
+.features-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+
+}
+
+.feature-card {
+
+    background: var(--card-color);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 22px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    transition: .35s;
+
+    box-shadow: var(--shadow-md);
+
+}
+
+.feature-card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow: var(--shadow-lg);
+
+}
+
+.feature-icon {
+
+    font-size: 3rem;
+
+    color: var(--primary-color);
+
+    margin-bottom: 25px;
+
+}
+
+.feature-card h3 {
+
+    margin-bottom: 18px;
+
+    font-size: 1.5rem;
+
+}
+
+.feature-card p {
+
+    color: var(--text-secondary);
+
+    line-height: 1.7;
+
+}
+
+/* ==========================================================
+                     HOW IT WORKS
+========================================================== */
+
+.how-section {
+
+    padding: 100px 0;
+
+}
+
+.timeline {
+
+    position: relative;
+
+    max-width: 900px;
+
+    margin: 60px auto 0;
+
+}
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 35px;
+
+    top: 0;
+
+    width: 4px;
+
+    height: 100%;
+
+    background: linear-gradient(var(--primary-color),
+            var(--secondary-color));
+
+}
+
+.timeline-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 30px;
+
+    margin-bottom: 60px;
+
+    position: relative;
+
+}
+
+.timeline-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    min-width: 70px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,
+            var(--primary-color),
+            var(--secondary-color));
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 1.7rem;
+
+    z-index: 2;
+
+    box-shadow: var(--shadow-md);
+
+}
+
+.timeline-content {
+
+    background: var(--card-color);
+
+    padding: 25px 30px;
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow-md);
+
+    border: 1px solid var(--border-color);
+
+    width: 100%;
+
+}
+
+.timeline-content h3 {
+
+    margin-bottom: 10px;
+
+}
+
+.timeline-content p {
+
+    color: var(--text-secondary);
+
+    line-height: 1.7;
+
+}
+
+/* ==========================================================
+                          FOOTER
+========================================================== */
+
+.footer {
+
+    margin-top: 100px;
+
+    background: #0F172A;
+
+    color: white;
+
+}
+
+.footer-container {
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+
+    gap: 60px;
+
+    padding: 70px 0;
+
+}
+
+.footer h2 {
+
+    margin-bottom: 15px;
+
+}
+
+.footer p {
+
+    color: #CBD5E1;
+
+    line-height: 1.8;
+
+}
+
+.footer h3 {
+
+    margin-bottom: 20px;
+
+}
+
+.footer ul {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+.footer ul a {
+
+    color: #CBD5E1;
+
+}
+
+.footer ul a:hover {
+
+    color: white;
+
+}
+
+.footer-bottom {
+
+    text-align: center;
+
+    padding: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, .15);
+
+    color: #CBD5E1;
+
+}
+
+/* ==========================================================
+                     WORKFLOW PAGE
+========================================================== */
+
+.workflow-title {
+
+    text-align: center;
+
+    margin: 70px 0;
+
+}
+
+.workflow-title h1 {
+
+    font-size: 3rem;
+
+    margin-bottom: 15px;
+
+}
+
+.workflow-title p {
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.flow-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+.flow-icon {
+
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,
+            var(--primary-color),
+            var(--secondary-color));
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    font-size: 2rem;
+
+}
+
+.flow-content h2 {
+
+    margin-bottom: 12px;
+
+}
+
+.flow-content p {
+
+    color: var(--text-secondary);
+
+    line-height: 1.8;
+
+}
+
+.flow-arrow {
+
+    text-align: center;
+
+    margin: 25px 0;
+
+    font-size: 2rem;
+
+    color: var(--primary-color);
+
+}
+
+/*==========================================================
+                    WORKFLOW HEADER
+==========================================================*/
+
+.workflow-page {
+
+    padding: 60px 0;
+
+}
+
+.breadcrumb {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--text-secondary);
+
+    margin-bottom: 60px;
+
+}
+
+.breadcrumb a {
+
+    color: var(--primary-color);
+
+    font-weight: 600;
+
+}
+
+.workflow-title {
+
+    text-align: center;
+
+}
+
+.workflow-title h1 {
+
+    font-size: 3rem;
+
+    margin-bottom: 20px;
+
+}
+
+.workflow-title h2 {
+
+    font-size: 2.2rem;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+
+}
+
+.workflow-title h2 span {
+
+    color: var(--primary-color);
+
+}
+
+.workflow-title p {
+
+    max-width: 750px;
+
+    margin: auto;
+
+    color: var(--text-secondary);
+
+    line-height: 1.8;
+
+}
+
+.time-card {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 35px;
+
+    padding: 16px 28px;
+
+    border-radius: 50px;
+
+    background: rgba(37, 99, 235, .08);
+
+    color: var(--primary-color);
+
+    font-weight: 600;
+
+}
+
+/*=========================================================
+                   WORKFLOW NAVBAR
+=========================================================*/
+
+.workflow-header {
+
+    background: var(--surface-color);
+
+    border-bottom: 1px solid var(--border-color);
+
+    padding: 18px 0;
+
+}
+
+.workflow-nav {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.workflow-nav h2 {
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+}
+
+.back-home {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--primary-color);
+
+    font-weight: 600;
+
+}
+
+/*=========================================================
+                  WORKFLOW DARK THEME
+=========================================================*/
+
+.workflow-dark {
+
+    background: linear-gradient(180deg,
+            #081120 0%,
+            #10213A 45%,
+            #18365D 100%);
+
+    min-height: 100vh;
+
+}
+
+.workflow-dark .workflow-header {
+
+    background: rgba(8, 17, 32, .90);
+
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+.workflow-dark .workflow-title h1 {
+
+    color: #FFFFFF;
+
+}
+
+.workflow-dark .workflow-title h2 {
+
+    color: #FFFFFF;
+
+}
+
+.workflow-dark .workflow-title p {
+
+    color: #CBD5E1;
+
+}
+
+.workflow-dark .breadcrumb p {
+
+    color: #CBD5E1;
+
+}
+
+.workflow-dark .workflow-nav h2 {
+
+    color: white;
+
+}
+
+.workflow-dark .flow-card {
+
+    background: white;
+
+    border: none;
+
+}
+
+/*=========================================================
+                   WORKFLOW CONTENT
+=========================================================*/
+
+.workflow-content {
+
+    width: 85%;
+    max-width: 900px;
+    margin: 80px auto;
+
+}
+
+.workflow-step {
+
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 30px;
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 25px;
+
+}
+
+.step-number {
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+
+}
+
+.step-info h2 {
+
+    color: white;
+    margin-bottom: 12px;
+    font-size: 1.8rem;
+
+}
+
+.step-info p {
+
+    color: #CBD5E1;
+    line-height: 1.8;
+
+}
+
+.workflow-arrow {
+
+    text-align: center;
+    color: #4FA3FF;
+    font-size: 2rem;
+    margin: 10px 0 30px;
+
+}

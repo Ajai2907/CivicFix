@@ -1,0 +1,154 @@
+/* ===========================================
+              TABLETS (992px)
+=========================================== */
+
+@media (max-width:992px) {
+
+    .login-btn {
+        display: none;
+    }
+
+    .hero-container {
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+
+        text-align: center;
+
+        gap: 40px;
+
+    }
+
+    .hero-left {
+
+        width: 100% !important;
+
+    }
+
+    .hero-right {
+
+        width: 100% !important;
+
+        display: flex;
+
+        justify-content: center;
+
+    }
+
+    .hero-left h1 {
+        font-size: 60px;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ===========================================
+                   MOBILE
+=========================================== */
+
+@media (max-width:768px) {
+
+    .nav-container {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .nav-links li a {
+        font-size: 16px;
+    }
+
+    .hero {
+        padding-top: 170px;
+    }
+
+    .hero-left h1 {
+
+        font-size: 52px;
+
+        line-height: 1.15;
+
+    }
+
+    .hero-left p {
+        font-size: 18px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-image {
+        width: 320px;
+        height: 320px;
+        margin: auto;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ===========================================
+               SMALL PHONES
+=========================================== */
+
+@media (max-width:480px) {
+
+    .hero-left h1 {
+        font-size: 38px;
+    }
+
+    .hero-badge {
+
+        display: inline-block;
+
+        white-space: normal;
+
+        max-width: 320px;
+
+        padding: 12px 20px;
+
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}

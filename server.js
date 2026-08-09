@@ -23,8 +23,21 @@ try {
 
 // Initialize database
 const { db, dbDriver } = require('./db/database');
+const {
+    router: complaintsRouter,
+    processPostComplaint,
+    processGetTrack,
+    processPatchStatus,
+    uploadMiddleware
+} = require('./routes/complaints');
 
 const PORT = process.env.PORT || 3000;
+
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 let app;
 let isExpress = false;
@@ -40,6 +53,9 @@ try {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
+    // Serve uploaded images statically
+    app.use('/uploads', express.static(uploadsDir));
+
     // Serve static frontend files (Citizen Portal, styles, scripts, pages)
     app.use(express.static(path.join(__dirname)));
 
@@ -51,10 +67,25 @@ try {
         });
     });
 
+    // API Routes
+    if (complaintsRouter) {
+        app.use('/api', complaintsRouter);
+    }
+
+    // Centralized Error Handler
+    app.use((err, req, res, next) => {
+        console.error('[Express Central Error Handler]', err.stack || err.message || err);
+        res.status(err.status || 500).json({
+            success: false,
+            message: err.message || 'An internal server error occurred.'
+        });
+    });
+
     app.listen(PORT, () => {
         console.log(`==========================================`);
         console.log(`🚀 CivicFix Server (Express) running on port ${PORT}`);
         console.log(`🌐 Health Check: http://localhost:${PORT}/api/health`);
+        console.log(`📁 Uploads Directory: http://localhost:${PORT}/uploads`);
         console.log(`==========================================`);
     });
 } catch (expressErr) {
@@ -71,21 +102,68 @@ try {
     };
 
     const server = http.createServer((req, res) => {
-        const urlPath = req.url.split('?')[0];
+        const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+        const urlPath = parsedUrl.pathname;
+
+        // CORS Headers
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+        if (req.method === 'OPTIONS') {
+            res.writeHead(204);
+            return res.end();
+        }
 
         // API Health Endpoint
         if (urlPath === '/api/health' && req.method === 'GET') {
-            res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+            res.writeHead(200, { 'Content-Type': 'application/json' });
             return res.end(JSON.stringify({
                 success: true,
                 message: "CivicFix backend is running"
             }));
         }
 
-        // Static File Serving
+        // POST /api/complaints
+        if (urlPath === '/api/complaints' && req.method === 'POST') {
+            return uploadMiddleware(req, res, async (err) => {
+                if (err) {
+                    res.writeHead(400, { 'Content-Type': 'application/json' });
+                    return res.end(JSON.stringify({ success: false, message: err.message }));
+                }
+                const result = await processPostComplaint(req.body, req.file);
+                res.writeHead(result.status, { 'Content-Type': 'application/json' });
+                return res.end(JSON.stringify(result.data));
+            });
+        }
+
+        // GET /api/complaints/track
+        if (urlPath === '/api/complaints/track' && req.method === 'GET') {
+            const queryParams = Object.fromEntries(parsedUrl.searchParams);
+            const result = processGetTrack(queryParams);
+            res.writeHead(result.status, { 'Content-Type': 'application/json' });
+            return res.end(JSON.stringify(result.data));
+        }
+
+        // PATCH /api/authority/complaints/:id/status
+        if (urlPath.startsWith('/api/authority/complaints/') && urlPath.endsWith('/status') && req.method === 'PATCH') {
+            const parts = urlPath.split('/');
+            const id = parts[4];
+            let body = '';
+            req.on('data', chunk => body += chunk);
+            req.on('end', () => {
+                let parsedBody = {};
+                try { parsedBody = JSON.parse(body); } catch (e) {}
+                const result = processPatchStatus({ id }, parsedBody);
+                res.writeHead(result.status, { 'Content-Type': 'application/json' });
+                return res.end(JSON.stringify(result.data));
+            });
+            return;
+        }
+
+        // Static File Serving (Uploads & Frontend)
         let filePath = path.join(__dirname, urlPath === '/' ? 'index.html' : urlPath);
         
-        // Prevent directory traversal
         if (!filePath.startsWith(__dirname)) {
             res.writeHead(403, { 'Content-Type': 'text/plain' });
             return res.end('Forbidden');
@@ -108,6 +186,7 @@ try {
         console.log(`==========================================`);
         console.log(`🚀 CivicFix Server (Native HTTP) running on port ${PORT}`);
         console.log(`🌐 Health Check: http://localhost:${PORT}/api/health`);
+        console.log(`📁 Uploads Directory: http://localhost:${PORT}/uploads`);
         console.log(`==========================================`);
     });
 }

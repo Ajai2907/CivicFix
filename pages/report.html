@@ -15,8 +15,9 @@
 
     <link rel="stylesheet" href="../css/variables.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body>
@@ -50,8 +51,8 @@
 
                 <h2>Upload Photo</h2>
 
+                <label for="complaintImage">Complaint Photo</label>
                 <input type="file" id="complaintImage" accept="image/*">
-
             </section>
 
             <!-- Category -->
@@ -60,21 +61,21 @@
 
                 <h2>Issue Category</h2>
 
-                <select id="category">
+                <label for="category">Select Category</label>
+                <select id="category" name="category">
 
-                    <option>Select Category</option>
+                    <option value="" selected disabled>Select Category</option>
+                    <option value="road-damage">Road Damage</option>
 
-                    <option>Road Damage</option>
+                    <option value="water-leakage">Water Leakage</option>
 
-                    <option>Water Leakage</option>
+                    <option value="garbage">Garbage</option>
 
-                    <option>Garbage</option>
+                    <option value="street-light">Street Light</option>
 
-                    <option>Street Light</option>
+                    <option value="drainage">Drainage</option>
 
-                    <option>Drainage</option>
-
-                    <option>Others</option>
+                    <option value="others">Others</option>
 
                 </select>
 
@@ -86,6 +87,7 @@
 
                 <h2>Description</h2>
 
+                <label for="description">Issue Description</label>
                 <textarea id="description" rows="6" placeholder="Describe the issue..."></textarea>
 
             </section>
@@ -96,7 +98,7 @@
 
                 <h2>Location</h2>
 
-                <button type="button">
+                <button type="button" id="getLocationBtn">
 
                     <i class="fa-solid fa-location-crosshairs"></i>
 
@@ -106,7 +108,7 @@
 
                 <div id="map">
 
-                    Map Preview
+                    <span id="locationStatus">Map Preview</span>
 
                 </div>
 
@@ -118,8 +120,13 @@
 
                 <h2>Your Details</h2>
 
+                <label for="name">Full Name</label>
                 <input type="text" id="name" placeholder="Full Name">
+
+                <label for="email">Email Address</label>
                 <input type="email" id="email" placeholder="Email Address">
+
+                <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" placeholder="Phone Number">
 
             </section>
@@ -132,7 +139,7 @@
 
                     <input type="checkbox" id="confirmation">
 
-                    <label for="confirmation">I confirm the all the above information is correct.</label>
+                    <label for="confirmation">I confirm that all the above information is correct.</label>
 
                 </div>
 
@@ -149,17 +156,6 @@
         </form>
 
     </main>
-    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
-
-    <script src="../js/firebase.js"></script>
-
-    <script src="../js/firestore.js"></script>
-
-    <script src="../js/config.js"></script>
-
-    <script src="../js/gemini.js"></script>
 
     <script src="../js/report.js"></script>
 

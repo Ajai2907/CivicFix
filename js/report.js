@@ -5,7 +5,12 @@
 
 const form = document.getElementById("complaintForm");
 const imageInput = document.getElementById("complaintImage");
+const getLocationBtn = document.getElementById("getLocationBtn");
+const locationStatus = document.getElementById("locationStatus");
 
+let currentLatitude = "";
+let currentLongitude = "";
+let currentAddress = "";
 // Backend URL for current local development.
 // Later, when we deploy CivicFix, this can become a relative API path.
 const API_BASE_URL = "http://localhost:3000";
@@ -62,6 +67,105 @@ if (imageInput) {
         }
 
         console.log("✅ Image selected:", file.name);
+
+    });
+
+}
+
+// ============================================================
+// LOCATION / GPS
+// ============================================================
+
+if (getLocationBtn) {
+
+    getLocationBtn.addEventListener("click", () => {
+
+        if (!navigator.geolocation) {
+
+            alert("Geolocation is not supported by this browser.");
+
+            return;
+        }
+
+        getLocationBtn.disabled = true;
+        getLocationBtn.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Getting Location...';
+
+        if (locationStatus) {
+            locationStatus.textContent = "Getting your current location...";
+        }
+
+        navigator.geolocation.getCurrentPosition(
+
+            async (position) => {
+
+                currentLatitude = position.coords.latitude;
+                currentLongitude = position.coords.longitude;
+
+                console.log("✅ Latitude:", currentLatitude);
+                console.log("✅ Longitude:", currentLongitude);
+
+                // For now, keep the address as coordinates.
+                // Reverse geocoding can be added after the GPS flow works.
+                currentAddress =
+                    `Latitude: ${currentLatitude.toFixed(6)}, ` +
+                    `Longitude: ${currentLongitude.toFixed(6)}`;
+
+                if (locationStatus) {
+
+                    locationStatus.innerHTML =
+                        `<i class="fa-solid fa-circle-check"></i> ` +
+                        `Location Captured<br>` +
+                        `<small>${currentAddress}</small>`;
+
+                }
+
+                getLocationBtn.innerHTML =
+                    '<i class="fa-solid fa-location-dot"></i> Location Captured';
+
+                getLocationBtn.disabled = false;
+
+            },
+
+            (error) => {
+
+                console.error("❌ Location error:", error);
+
+                let message = "Unable to get your location.";
+
+                switch (error.code) {
+
+                    case error.PERMISSION_DENIED:
+                        message =
+                            "Location permission was denied. Please allow location access.";
+                        break;
+
+                    case error.POSITION_UNAVAILABLE:
+                        message =
+                            "Your location is currently unavailable.";
+                        break;
+
+                    case error.TIMEOUT:
+                        message =
+                            "Location request timed out. Please try again.";
+                        break;
+
+                }
+
+                alert(message);
+
+                if (locationStatus) {
+                    locationStatus.textContent = "Location not captured";
+                }
+
+                getLocationBtn.innerHTML =
+                    '<i class="fa-solid fa-location-crosshairs"></i> Get Current Location';
+
+                getLocationBtn.disabled = false;
+
+            }
+
+        );
 
     });
 
@@ -154,9 +258,9 @@ if (form) {
 
             // Location fields are currently optional.
             // We'll wire the GPS button in the next step.
-            formData.append("latitude", "");
-            formData.append("longitude", "");
-            formData.append("address", "");
+            formData.append("latitude", currentLatitude);
+            formData.append("longitude", currentLongitude);
+            formData.append("address", currentAddress);
 
             // IMPORTANT:
             // Backend Multer expects the field name "image".
